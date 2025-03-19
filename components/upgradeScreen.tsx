@@ -86,7 +86,7 @@ upgradeScreenProp) => {
                         title={item.title}
                         image={item.image}
                         upgradeName={item.upgradeName}
-                        cost={item.cost}
+                        cost={item.baseCost}
                         upgradePurchase={upgradePurchase}
                         // upgradeTotalOwned={upgradeTotalOwned}
                     />
