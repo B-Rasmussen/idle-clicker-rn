@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import UpgradeScreen from "./components/upgradeScreen";
 import HomeScreen from "./components/clickerScreen";
 import StatsScreen from "./components/statsScreen";
@@ -11,14 +11,27 @@ declare module "react" {
             UpgradeScreen: any;
             StatsScreen: any;
             pointIncrease: number;
+            // upgradeTotalOwned: upgradeData;
         }
     }
 }
 
+type upgradeData = {
+    [key: string]: number;
+}
+
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState("Home");
-    const [totalPoints, setTotalPoints] = useState(0);
+    const [totalPoints, setTotalPoints] = useState(1000);
     const [clickPower, setClickPower] = useState(1);
+    const [upgradeTotalOwned, setUpgradeTotalOwned] = useState<upgradeData>({
+        clickerUpgrade: 0,
+        upgrade1: 0,
+        upgrade2: 0,
+        upgrade3: 0,
+        upgrade4: 0,
+        upgrade5: 0,
+    });
 
     // FUNCTION TO NAVIGATE BETWEEN SCREENS
     const navigate = (screenName: SetStateAction<string>) => {
@@ -29,11 +42,20 @@ export default function App() {
         setTotalPoints(totalPoints + clickPower);
     };
 
-    const upgradePurchase = (upgradeCost: any) => {
+    const upgradePurchase = (upgradeCost: any, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
             setTotalPoints(totalPoints - upgradeCost);
+            upgradeOwnedIncrease(1, upgradeName)
         }
     };
+
+    const upgradeOwnedIncrease = (increaseBy: any, upgradeName: string) => {
+        setUpgradeTotalOwned(prevState => ({
+            ...prevState,
+            upgradeName: prevState[upgradeName] + increaseBy
+        }))
+        console.log('upgar owned: ', upgradeTotalOwned)
+    }
 
     const renderScreen = () => {
         switch (currentScreen) {
@@ -51,6 +73,7 @@ export default function App() {
                         navigate={navigate}
                         totalPoints={totalPoints}
                         upgradePurchase={upgradePurchase}
+                        // upgradeTotalOwned={upgradeTotalOwned}
                     />
                 );
             case "Stats":

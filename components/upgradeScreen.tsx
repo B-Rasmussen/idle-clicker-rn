@@ -4,21 +4,27 @@ import {
     TouchableOpacity,
     View,
     Image,
-    Button,
     StyleSheet,
 } from "react-native";
 import upgradeData from "./upgradeData";
 
+interface upgradeData {
+    [key: string]: number;
+}
+
 type ItemProps = {
+    image: string;
     title: string;
+    upgradeName: string;
     cost: number;
-    owned: number;
-    upgradePurchase: (cost: number) => void;
+    upgradePurchase: (cost: number, upgradeName: string) => void;
+    // upgradeTotalOwned: Array<upgradeData>;
 };
 type upgradeScreenProp = {
     navigate: any;
     totalPoints: number;
-    upgradePurchase: (cost: number) => void;
+    upgradePurchase: (cost: number, upgradeName: string) => void;
+    // upgradeTotalOwned: Array<upgradeData>;
 };
 
 // const clickPowerIncrease = () => {
@@ -28,23 +34,40 @@ type upgradeScreenProp = {
 //     }
 // };
 
-const Item = ({ title, cost, owned, upgradePurchase }: ItemProps) => (
-    <TouchableOpacity 
-        activeOpacity={1} 
-        onPress={() => upgradePurchase(cost)}
+const Item = ({
+    image,
+    title,
+    upgradeName,
+    cost,
+    upgradePurchase,
+}: // upgradeTotalOwned,
+ItemProps) => (
+    <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => upgradePurchase(cost, upgradeName)}
     >
         <View style={styles.upgradeButton}>
-            <Image src="assets/icon.png" />
             <View style={styles.upgradeButtonTextContainer}>
+                <Image
+                    source={image}
+                    style={styles.image}
+                />
                 <Text style={styles.upgradeButtonText}>{title}</Text>
                 <Text style={styles.upgradeButtonText}>Cost: {cost}</Text>
             </View>
-            <Text style={styles.upgradeButtonText}>Total Owned: {owned}</Text>
+            <Text style={styles.upgradeButtonText}>
+                {/* Total Owned: {upgradeTotalOwned} */}
+            </Text>
         </View>
     </TouchableOpacity>
 );
 
-const UpgradeScreen = ({ navigate, totalPoints, upgradePurchase }: upgradeScreenProp) => {
+const UpgradeScreen = ({
+    navigate,
+    totalPoints,
+    upgradePurchase,
+}: // upgradeTotalOwned,
+upgradeScreenProp) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -57,12 +80,15 @@ const UpgradeScreen = ({ navigate, totalPoints, upgradePurchase }: upgradeScreen
             <Text>total currency: {totalPoints}</Text>
             <FlatList
                 data={upgradeData}
+                // extraData={upgradeTotalOwned}
                 renderItem={({ item }) => (
                     <Item
                         title={item.title}
+                        image={item.image}
+                        upgradeName={item.upgradeName}
                         cost={item.cost}
-                        owned={item.totalOwned}
                         upgradePurchase={upgradePurchase}
+                        // upgradeTotalOwned={upgradeTotalOwned}
                     />
                 )}
                 keyExtractor={(item) => item.id}
@@ -74,6 +100,10 @@ const UpgradeScreen = ({ navigate, totalPoints, upgradePurchase }: upgradeScreen
 export default UpgradeScreen;
 
 const styles = StyleSheet.create({
+    image: {
+        height: 50,
+        width: 50,
+    },
     button: {
         paddingVertical: 10,
         paddingHorizontal: 25,
@@ -110,6 +140,3 @@ const styles = StyleSheet.create({
         width: "100%",
     },
 });
-function upgradePurchase(cost: number): void {
-    throw new Error("Function not implemented.");
-}
