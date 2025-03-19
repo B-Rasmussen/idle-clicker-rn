@@ -13,7 +13,7 @@ interface upgradeData {
 }
 
 type ItemProps = {
-    image: string;
+    image: Image;
     title: string;
     upgradeName: string;
     cost: number;
@@ -49,7 +49,7 @@ ItemProps) => (
         <View style={styles.upgradeButton}>
             <View style={styles.upgradeButtonTextContainer}>
                 <Image
-                    source={image}
+                    source={image as ImageSourcePropType}
                     style={styles.image}
                 />
                 <Text style={styles.upgradeButtonText}>{title}</Text>
