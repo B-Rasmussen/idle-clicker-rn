@@ -52,7 +52,7 @@ export default function App() {
     const upgradeOwnedIncrease = (upgradeName: string) => {
         setUpgradeTotalOwned((prevState) => ({
             ...prevState,
-            [upgradeName]: prevState[upgradeName] + 1,
+            [upgradeName]: (prevState[upgradeName] || 0) + 1,
         }));
     };
 
