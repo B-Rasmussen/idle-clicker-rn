@@ -18,7 +18,7 @@ declare module "react" {
 
 type upgradeData = {
     [key: string]: number;
-}
+};
 
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState("Home");
@@ -45,17 +45,16 @@ export default function App() {
     const upgradePurchase = (upgradeCost: any, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
             setTotalPoints(totalPoints - upgradeCost);
-            upgradeOwnedIncrease(1, upgradeName)
+            upgradeOwnedIncrease(upgradeName);
         }
     };
 
-    const upgradeOwnedIncrease = (increaseBy: any, upgradeName: string) => {
-        setUpgradeTotalOwned(prevState => ({
+    const upgradeOwnedIncrease = (upgradeName: string) => {
+        setUpgradeTotalOwned((prevState) => ({
             ...prevState,
-            upgradeName: prevState[upgradeName] + increaseBy
-        }))
-        console.log('upgar owned: ', upgradeTotalOwned)
-    }
+            [upgradeName]: prevState[upgradeName] + 1,
+        }));
+    };
 
     const renderScreen = () => {
         switch (currentScreen) {

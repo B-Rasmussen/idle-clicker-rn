@@ -1,7 +1,7 @@
 const upgradeData = [
     {
         id: "0",
-        image: require("../assets/adaptive-icon.png"),
+        image: require("../assets/icon.png"),
         title: "Clicker upgrade",
         upgradeName: "clickerUpgrade",
         baseCost: 10,
@@ -19,7 +19,7 @@ const upgradeData = [
     },
     {
         id: "2",
-        image: require("../assets/adaptive-icon.png"),
+        image: require("../assets/splash-icon.png"),
         title: "Second upgrade",
         upgradeName: "upgrade2",
         baseCost: 20,
