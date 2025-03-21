@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import UpgradeScreen from "./components/upgradeScreen";
 import HomeScreen from "./components/clickerScreen";
@@ -23,6 +23,7 @@ type upgradeData = {
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState("Home");
     const [totalPoints, setTotalPoints] = useState(1000);
+    const [passivePoints, setPassivePoints] = useState(0);
     const [clickPower, setClickPower] = useState(1);
     const [upgradeTotalOwned, setUpgradeTotalOwned] = useState<upgradeData>({
         clickerUpgrade: 0,
@@ -41,6 +42,14 @@ export default function App() {
     const pointIncrease = () => {
         setTotalPoints(totalPoints + clickPower);
     };
+
+    useEffect(() => {
+        const passivePointIncrease = setInterval(() => {
+            setTotalPoints(prevTotal => prevTotal + passivePoints);
+        }, 1000);
+
+        return () => clearInterval(passivePointIncrease)
+    }, [passivePoints])
 
     const upgradePurchase = (upgradeCost: any, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
