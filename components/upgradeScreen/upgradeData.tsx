@@ -1,7 +1,7 @@
 const upgradeData = [
     {
         id: "0",
-        image: require("../assets/icon.png"),
+        image: require("../../assets/icon.png"),
         title: "Clicker upgrade",
         upgradeName: "clickerUpgrade",
         baseCost: 10,
@@ -10,7 +10,7 @@ const upgradeData = [
     },
     {
         id: "1",
-        image: require("../assets/favicon.png"),
+        image: require("../../assets/favicon.png"),
         title: "First upgrade",
         upgradeName: "upgrade1",
         baseCost: 10,
@@ -19,7 +19,7 @@ const upgradeData = [
     },
     {
         id: "2",
-        image: require("../assets/splash-icon.png"),
+        image: require("../../assets/splash-icon.png"),
         title: "Second upgrade",
         upgradeName: "upgrade2",
         baseCost: 20,
@@ -28,7 +28,7 @@ const upgradeData = [
     },
     {
         id: "3",
-        image: require("../assets/adaptive-icon.png"),
+        image: require("../../assets/adaptive-icon.png"),
         title: "Third upgrade",
         upgradeName: "upgrade3",
         baseCost: 30,
@@ -37,7 +37,7 @@ const upgradeData = [
     },
     {
         id: "4",
-        image: require("../assets/adaptive-icon.png"),
+        image: require("../../assets/adaptive-icon.png"),
         title: "Fourth upgrade",
         upgradeName: "upgrade4",
         baseCost: 40,
@@ -46,7 +46,7 @@ const upgradeData = [
     },
     {
         id: "5",
-        image: require("../assets/adaptive-icon.png"),
+        image: require("../../assets/adaptive-icon.png"),
         title: "Fifth upgrade",
         upgradeName: "upgrade5",
         baseCost: 50,
