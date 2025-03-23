@@ -1,8 +1,8 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import UpgradeScreen from "./components/upgradeScreen";
-import HomeScreen from "./components/clickerScreen";
-import StatsScreen from "./components/statsScreen";
+import UpgradeScreen from "./components/upgradeScreen/upgradeScreen";
+import HomeScreen from "./components/clickerScreen/clickerScreen";
+import StatsScreen from "./components/statsScreen/statsScreen";
 
 declare module "react" {
     namespace JSX {
@@ -45,11 +45,11 @@ export default function App() {
 
     useEffect(() => {
         const passivePointIncrease = setInterval(() => {
-            setTotalPoints(prevTotal => prevTotal + passivePoints);
+            setTotalPoints((prevTotal) => prevTotal + passivePoints);
         }, 1000);
 
-        return () => clearInterval(passivePointIncrease)
-    }, [passivePoints])
+        return () => clearInterval(passivePointIncrease);
+    }, [passivePoints]);
 
     const upgradePurchase = (upgradeCost: any, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
