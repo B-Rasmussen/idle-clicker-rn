@@ -34,8 +34,8 @@ const Item = ({
     upgradeName,
     cost,
     upgradePurchase,
-}: // upgradeTotalOwned,
-ItemProps) => (
+    upgradeTotalOwned,
+}: ItemProps) => (
     <TouchableOpacity
         activeOpacity={1}
         onPress={() => upgradePurchase(cost, upgradeName)}
@@ -46,12 +46,14 @@ ItemProps) => (
                     source={image as ImageSourcePropType}
                     style={styles.image}
                 />
-                <Text style={styles.upgradeButtonText}>{title}</Text>
-                <Text style={styles.upgradeButtonText}>Cost: {cost}</Text>
+                <View>
+                    <Text style={styles.upgradeButtonText}>{title}</Text>
+                    <Text style={styles.upgradeButtonText}>Cost: {cost}</Text>
+                    <Text style={styles.upgradeButtonText}>
+                        Total Owned: {upgradeTotalOwned}
+                    </Text>
+                </View>
             </View>
-            <Text style={styles.upgradeButtonText}>
-                {/* Total Owned: {upgradeTotalOwned} */}
-            </Text>
         </View>
     </TouchableOpacity>
 );
@@ -62,6 +64,7 @@ const UpgradeScreen = ({
     upgradePurchase,
     upgradeTotalOwned,
 }: upgradeScreenProp) => {
+    console.log("upgrade prop total owned: ", upgradeTotalOwned);
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -81,7 +84,7 @@ const UpgradeScreen = ({
                         upgradeName={item.upgradeName}
                         cost={item.baseCost}
                         upgradePurchase={upgradePurchase}
-                        upgradeTotalOwned={upgradeTotalOwned[item.id]}
+                        upgradeTotalOwned={upgradeTotalOwned[item.upgradeName] == undefined ? 0 :  upgradeTotalOwned[item.upgradeName]}
                     />
                 )}
                 keyExtractor={(item) => item.id}
