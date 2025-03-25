@@ -21,13 +21,6 @@ type upgradeScreenProp = {
     upgradeTotalOwned: any;
 };
 
-// const clickPowerIncrease = () => {
-//     if (totalPoints > clickPower) {
-//         setClickPower(clickPower + 1);
-//         setTotalPoints(totalPoints - clickPower);
-//     }
-// };
-
 const Item = ({
     image,
     title,
@@ -64,7 +57,6 @@ const UpgradeScreen = ({
     upgradePurchase,
     upgradeTotalOwned,
 }: upgradeScreenProp) => {
-    console.log("upgrade prop total owned: ", upgradeTotalOwned);
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -84,7 +76,11 @@ const UpgradeScreen = ({
                         upgradeName={item.upgradeName}
                         cost={item.baseCost}
                         upgradePurchase={upgradePurchase}
-                        upgradeTotalOwned={upgradeTotalOwned[item.upgradeName] == undefined ? 0 :  upgradeTotalOwned[item.upgradeName]}
+                        upgradeTotalOwned={
+                            upgradeTotalOwned[item.upgradeName] == undefined
+                                ? 0
+                                : upgradeTotalOwned[item.upgradeName]
+                        }
                     />
                 )}
                 keyExtractor={(item) => item.id}

@@ -22,7 +22,8 @@ type upgradeData = {
 
 export default function App() {
     const [currentScreen, setCurrentScreen] = useState("Home");
-    const [totalPoints, setTotalPoints] = useState(1000);
+    const [totalPoints, setTotalPoints] = useState(0);
+    const [lifetimeClicks, setLifetimeClicks] = useState(0);
     const [passivePoints, setPassivePoints] = useState(0);
     const [clickPower, setClickPower] = useState(1);
     const [upgradeTotalOwned, setUpgradeTotalOwned] = useState<upgradeData>({
@@ -41,6 +42,7 @@ export default function App() {
 
     const pointIncrease = () => {
         setTotalPoints(totalPoints + clickPower);
+        setLifetimeClicks(lifetimeClicks + 1)
     };
 
     useEffect(() => {
@@ -53,8 +55,18 @@ export default function App() {
 
     const upgradePurchase = (upgradeCost: number, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
+            if (upgradeName == 'clickerUpgrade') {
+                setClickPower(clickPower + 1);
+            }
             setTotalPoints(totalPoints - upgradeCost);
             upgradeOwnedIncrease(upgradeName);
+        }
+    };
+
+    const clickPowerIncrease = () => {
+        if (totalPoints > clickPower) {
+            setClickPower(clickPower + 1);
+            setTotalPoints(totalPoints - clickPower);
         }
     };
 
