@@ -63,13 +63,6 @@ export default function App() {
         }
     };
 
-    const clickPowerIncrease = () => {
-        if (totalPoints > clickPower) {
-            setClickPower(clickPower + 1);
-            setTotalPoints(totalPoints - clickPower);
-        }
-    };
-
     const upgradeOwnedIncrease = (upgradeName: string) => {
         setUpgradeTotalOwned((prevState) => ({
             ...prevState,
