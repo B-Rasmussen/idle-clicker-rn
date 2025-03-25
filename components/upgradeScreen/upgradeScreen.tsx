@@ -12,13 +12,13 @@ type ItemProps = {
     upgradeName: string;
     cost: number;
     upgradePurchase: (cost: number, upgradeName: string) => void;
-    // upgradeTotalOwned: Array<upgradeData>;
+    upgradeTotalOwned: any;
 };
 type upgradeScreenProp = {
     navigate: any;
     totalPoints: number;
     upgradePurchase: (cost: number, upgradeName: string) => void;
-    // upgradeTotalOwned: Array<upgradeData>;
+    upgradeTotalOwned: any;
 };
 
 // const clickPowerIncrease = () => {
@@ -60,8 +60,8 @@ const UpgradeScreen = ({
     navigate,
     totalPoints,
     upgradePurchase,
-}: // upgradeTotalOwned,
-upgradeScreenProp) => {
+    upgradeTotalOwned,
+}: upgradeScreenProp) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -74,7 +74,6 @@ upgradeScreenProp) => {
             <Text>total currency: {totalPoints}</Text>
             <FlatList
                 data={upgradeData}
-                // extraData={upgradeTotalOwned}
                 renderItem={({ item }) => (
                     <Item
                         title={item.title}
@@ -82,7 +81,7 @@ upgradeScreenProp) => {
                         upgradeName={item.upgradeName}
                         cost={item.baseCost}
                         upgradePurchase={upgradePurchase}
-                        // upgradeTotalOwned={upgradeTotalOwned}
+                        upgradeTotalOwned={upgradeTotalOwned[item.id]}
                     />
                 )}
                 keyExtractor={(item) => item.id}

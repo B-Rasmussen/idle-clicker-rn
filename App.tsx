@@ -11,7 +11,7 @@ declare module "react" {
             UpgradeScreen: any;
             StatsScreen: any;
             pointIncrease: number;
-            // upgradeTotalOwned: upgradeData;
+            upgradeTotalOwned: upgradeData;
         }
     }
 }
@@ -51,7 +51,7 @@ export default function App() {
         return () => clearInterval(passivePointIncrease);
     }, [passivePoints]);
 
-    const upgradePurchase = (upgradeCost: any, upgradeName: string) => {
+    const upgradePurchase = (upgradeCost: number, upgradeName: string) => {
         if (totalPoints >= upgradeCost) {
             setTotalPoints(totalPoints - upgradeCost);
             upgradeOwnedIncrease(upgradeName);
@@ -81,7 +81,7 @@ export default function App() {
                         navigate={navigate}
                         totalPoints={totalPoints}
                         upgradePurchase={upgradePurchase}
-                        // upgradeTotalOwned={upgradeTotalOwned}
+                        upgradeTotalOwned={upgradeTotalOwned}
                     />
                 );
             case "Stats":
