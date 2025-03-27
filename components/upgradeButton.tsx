@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View, Image, ImageSourcePropType } from "react-native";
 
 // TODO
 // SPLIT UPGRADE SCREEN STYLESHEET OR MOVE STYLESHEETS TO SEPARATE FOLDER
