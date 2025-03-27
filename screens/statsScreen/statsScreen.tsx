@@ -2,6 +2,9 @@ import { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./statsScreen.styles";
 
+// CUSTOM COMPONENTS
+import CustomTouchButton from "../../components/customButton";
+
 type navigateProp = { navigate: any };
 
 const StatsScreen = ({ navigate }: navigateProp) => {
@@ -14,13 +17,11 @@ const StatsScreen = ({ navigate }: navigateProp) => {
 
     return (
         <View>
-            <TouchableOpacity
-                activeOpacity={1}
-                style={styles.navButton}
-                onPress={() => navigate("Home")}
-            >
-                <Text>Home</Text>
-            </TouchableOpacity>
+            <CustomTouchButton
+                buttonName="Home"
+                onButtonPressed={() => navigate("Home")}
+                buttonStyle={styles.navButton}
+            />
         </View>
     );
 };

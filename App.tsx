@@ -1,8 +1,8 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import UpgradeScreen from "./components/upgradeScreen/upgradeScreen";
-import HomeScreen from "./components/clickerScreen/clickerScreen";
-import StatsScreen from "./components/statsScreen/statsScreen";
+import UpgradeScreen from "./screens/upgradeScreen/upgradeScreen";
+import HomeScreen from "./screens/clickerScreen/clickerScreen";
+import StatsScreen from "./screens/statsScreen/statsScreen";
 
 declare module "react" {
     namespace JSX {

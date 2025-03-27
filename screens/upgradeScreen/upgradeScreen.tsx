@@ -2,54 +2,20 @@ import { FlatList, Text, TouchableOpacity, View, Image } from "react-native";
 import upgradeData from "./upgradeData";
 import styles from "./upgradeScreen.styles";
 
+// CUSTOM COMPONENTS
+import CustomTouchButton from "../../components/customButton";
+import UpgradeButton from "../../components/upgradeButton";
+
 interface upgradeData {
     [key: string]: number;
 }
 
-type ItemProps = {
-    image: Image;
-    title: string;
-    upgradeName: string;
-    cost: number;
-    upgradePurchase: (cost: number, upgradeName: string) => void;
-    upgradeTotalOwned: any;
-};
 type upgradeScreenProp = {
     navigate: any;
     totalPoints: number;
     upgradePurchase: (cost: number, upgradeName: string) => void;
     upgradeTotalOwned: any;
 };
-
-const Item = ({
-    image,
-    title,
-    upgradeName,
-    cost,
-    upgradePurchase,
-    upgradeTotalOwned,
-}: ItemProps) => (
-    <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => upgradePurchase(cost, upgradeName)}
-    >
-        <View style={styles.upgradeButton}>
-            <View style={styles.upgradeButtonTextContainer}>
-                <Image
-                    source={image as ImageSourcePropType}
-                    style={styles.image}
-                />
-                <View>
-                    <Text style={styles.upgradeButtonText}>{title}</Text>
-                    <Text style={styles.upgradeButtonText}>Cost: {cost}</Text>
-                    <Text style={styles.upgradeButtonText}>
-                        Total Owned: {upgradeTotalOwned}
-                    </Text>
-                </View>
-            </View>
-        </View>
-    </TouchableOpacity>
-);
 
 const UpgradeScreen = ({
     navigate,
@@ -59,18 +25,17 @@ const UpgradeScreen = ({
 }: upgradeScreenProp) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity
-                activeOpacity={1}
-                onPress={() => navigate("Home")}
-                style={styles.button}
-            >
-                <Text style={styles.text}>Home</Text>
-            </TouchableOpacity>
+            <CustomTouchButton
+                buttonName={"Home"}
+                onButtonPressed={() => navigate("Home")}
+                buttonStyle={styles.button}
+                textStyle={styles.text}
+            />
             <Text>total currency: {totalPoints}</Text>
             <FlatList
                 data={upgradeData}
                 renderItem={({ item }) => (
-                    <Item
+                    <UpgradeButton
                         title={item.title}
                         image={item.image}
                         upgradeName={item.upgradeName}
