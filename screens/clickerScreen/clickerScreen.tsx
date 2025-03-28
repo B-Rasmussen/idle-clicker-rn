@@ -4,9 +4,13 @@ import styles from "./clickerScreen.styles";
 
 // CUSTOM COMPONENTS
 import CustomTouchButton from "../../components/customButton";
+import CurrencyBanner from "../../components/currencyBanner";
 
-
-type homeScreenProps = { navigate: any; pointIncrease: any; totalPoints: any };
+type homeScreenProps = {
+    navigate: any;
+    pointIncrease: any;
+    totalPoints: number;
+};
 
 const HomeScreen = ({
     navigate,
@@ -28,8 +32,7 @@ const HomeScreen = ({
                 />
             </View>
             <View style={styles.tapContainer}>
-                <Text>total taps:</Text>
-                <Text>{totalPoints}</Text>
+                <CurrencyBanner totalPoints={totalPoints} />
             </View>
             <CustomTouchButton
                 buttonName="CLICK ME!"

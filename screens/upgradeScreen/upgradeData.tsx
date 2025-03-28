@@ -4,9 +4,9 @@ const upgradeData = [
         image: require("../../assets/icon.png"),
         title: "Clicker upgrade",
         upgradeName: "clickerUpgrade",
-        baseCost: 10,
-        upgrade: 1,
+        baseCost: 5,
         costMutlipler: 2,
+        passivePointsIncrease: 0,
     },
     {
         id: "1",
@@ -14,8 +14,8 @@ const upgradeData = [
         title: "First upgrade",
         upgradeName: "upgrade1",
         baseCost: 10,
-        upgrade: 2,
         costMutlipler: 2,
+        passivePointsIncrease: 0.2,
     },
     {
         id: "2",
@@ -23,8 +23,8 @@ const upgradeData = [
         title: "Second upgrade",
         upgradeName: "upgrade2",
         baseCost: 20,
-        upgrade: 3,
         costMutlipler: 2,
+        passivePointsIncrease: 0.5,
     },
     {
         id: "3",
@@ -32,8 +32,8 @@ const upgradeData = [
         title: "Third upgrade",
         upgradeName: "upgrade3",
         baseCost: 30,
-        upgrade: 5,
         costMutlipler: 2,
+        passivePointsIncrease: 1,
     },
     {
         id: "4",
@@ -41,8 +41,8 @@ const upgradeData = [
         title: "Fourth upgrade",
         upgradeName: "upgrade4",
         baseCost: 40,
-        upgrade: 8,
         costMutlipler: 2,
+        passivePointsIncrease: 2,
     },
     {
         id: "5",
@@ -50,8 +50,8 @@ const upgradeData = [
         title: "Fifth upgrade",
         upgradeName: "upgrade5",
         baseCost: 50,
-        upgrade: 13,
         costMutlipler: 2,
+        passivePointsIncrease: 5,
     },
 ];
 

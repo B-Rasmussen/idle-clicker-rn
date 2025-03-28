@@ -9,7 +9,8 @@ type ItemProps = {
     title: string;
     upgradeName: string;
     cost: number;
-    upgradePurchase: (cost: number, upgradeName: string) => void;
+    passivePointsIncrease: number;
+    upgradePurchase: (cost: number, upgradeName: string, passivePointsIncrease: number) => void;
     upgradeTotalOwned: any;
 };
 
@@ -18,12 +19,13 @@ const UpgradeButton = ({
     title,
     upgradeName,
     cost,
+    passivePointsIncrease,
     upgradePurchase,
     upgradeTotalOwned,
 }: ItemProps) => (
     <TouchableOpacity
         activeOpacity={1}
-        onPress={() => upgradePurchase(cost, upgradeName)}
+        onPress={() => upgradePurchase(cost, upgradeName, passivePointsIncrease)}
     >
         <View style={styles.upgradeButton}>
             <View style={styles.upgradeButtonTextContainer}>

@@ -5,6 +5,7 @@ import styles from "./upgradeScreen.styles";
 // CUSTOM COMPONENTS
 import CustomTouchButton from "../../components/customButton";
 import UpgradeButton from "../../components/upgradeButton";
+import CurrencyBanner from "../../components/currencyBanner";
 
 interface upgradeData {
     [key: string]: number;
@@ -13,7 +14,7 @@ interface upgradeData {
 type upgradeScreenProp = {
     navigate: any;
     totalPoints: number;
-    upgradePurchase: (cost: number, upgradeName: string) => void;
+    upgradePurchase: (cost: number, upgradeName: string, passivePointsIncrease: number) => void;
     upgradeTotalOwned: any;
 };
 
@@ -31,7 +32,7 @@ const UpgradeScreen = ({
                 buttonStyle={styles.button}
                 textStyle={styles.text}
             />
-            <Text>total currency: {totalPoints}</Text>
+            <CurrencyBanner totalPoints={totalPoints} />
             <FlatList
                 data={upgradeData}
                 renderItem={({ item }) => (
@@ -40,6 +41,7 @@ const UpgradeScreen = ({
                         image={item.image}
                         upgradeName={item.upgradeName}
                         cost={item.baseCost}
+                        passivePointsIncrease={item.passivePointsIncrease}
                         upgradePurchase={upgradePurchase}
                         upgradeTotalOwned={
                             upgradeTotalOwned[item.upgradeName] == undefined

@@ -46,19 +46,20 @@ export default function App() {
     };
 
     useEffect(() => {
-        const passivePointIncrease = setInterval(() => {
+        const interval = setInterval(() => {
             setTotalPoints((prevTotal) => prevTotal + passivePoints);
         }, 1000);
 
-        return () => clearInterval(passivePointIncrease);
+        return () => clearInterval(interval);
     }, [passivePoints]);
 
-    const upgradePurchase = (upgradeCost: number, upgradeName: string) => {
+    const upgradePurchase = (upgradeCost: number, upgradeName: string, passivePointsIncrease: number) => {
         if (totalPoints >= upgradeCost) {
             if (upgradeName == 'clickerUpgrade') {
                 setClickPower(clickPower + 1);
             }
             setTotalPoints(totalPoints - upgradeCost);
+            setPassivePoints(passivePoints + passivePointsIncrease);
             upgradeOwnedIncrease(upgradeName);
         }
     };
@@ -68,6 +69,7 @@ export default function App() {
             ...prevState,
             [upgradeName]: (prevState[upgradeName] || 0) + 1,
         }));
+
     };
 
     const renderScreen = () => {
