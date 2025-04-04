@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         borderWidth: 10,
     },
     tapContainer: {
-        backgroundColor: "yellow",
         alignItems: "center",
         justifyContent: "center",
     },
