@@ -52,7 +52,7 @@ export default function App() {
     useEffect(() => {
         const interval = setInterval(() => {
             setTotalPoints((prevTotal) => prevTotal + passivePoints);
-        }, 1000);
+        }, 10);
 
         return () => clearInterval(interval);
     }, [passivePoints]);

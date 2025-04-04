@@ -15,7 +15,7 @@ const upgradeData = [
         upgradeName: "upgrade1",
         baseCost: 10,
         costMutlipler: 2,
-        passivePointsIncrease: 0.2,
+        passivePointsIncrease: 0.002,
     },
     {
         id: "2",
@@ -24,7 +24,7 @@ const upgradeData = [
         upgradeName: "upgrade2",
         baseCost: 20,
         costMutlipler: 2,
-        passivePointsIncrease: 0.5,
+        passivePointsIncrease: 0.005,
     },
     {
         id: "3",
@@ -33,7 +33,7 @@ const upgradeData = [
         upgradeName: "upgrade3",
         baseCost: 30,
         costMutlipler: 2,
-        passivePointsIncrease: 1,
+        passivePointsIncrease: 0.0075,
     },
     {
         id: "4",
@@ -42,7 +42,7 @@ const upgradeData = [
         upgradeName: "upgrade4",
         baseCost: 40,
         costMutlipler: 2,
-        passivePointsIncrease: 2,
+        passivePointsIncrease: 0.01,
     },
     {
         id: "5",
@@ -51,7 +51,7 @@ const upgradeData = [
         upgradeName: "upgrade5",
         baseCost: 50,
         costMutlipler: 2,
-        passivePointsIncrease: 5,
+        passivePointsIncrease: 0.025,
     },
 ];
 

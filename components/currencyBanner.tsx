@@ -6,7 +6,7 @@ type ButtonProps = {
 };
 
 const CurrencyBanner = ({ currencyText = 'total clicks: ', totalPoints }: ButtonProps) => (
-    <Text>{currencyText} {parseFloat(totalPoints.toFixed(1))}</Text>
+    <Text>{currencyText} {parseFloat(totalPoints.toFixed(0))}</Text>
 );
 
 export default CurrencyBanner;
