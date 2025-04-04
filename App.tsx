@@ -4,10 +4,9 @@ import UpgradeScreen from "./screens/upgradeScreen/upgradeScreen";
 import HomeScreen from "./screens/clickerScreen/clickerScreen";
 import StatsScreen from "./screens/statsScreen/statsScreen";
 
-// TODO: Separate logic into it's own file
+
 // TODO: Add images to upgradeData
 // TODO: Remove Stats?
-// TODO: Move Stylesheets to separate folder?
 
 declare module "react" {
     namespace JSX {
