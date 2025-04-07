@@ -7,10 +7,6 @@ import CustomTouchButton from "../../components/customButton";
 import UpgradeButton from "../../components/upgradeButton";
 import CurrencyBanner from "../../components/currencyBanner";
 
-interface upgradeData {
-    [key: string]: number;
-}
-
 type upgradeScreenProp = {
     navigate: any;
     totalPoints: number;
