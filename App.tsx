@@ -4,7 +4,6 @@ import UpgradeScreen from "./screens/upgradeScreen/upgradeScreen";
 import HomeScreen from "./screens/clickerScreen/clickerScreen";
 import StatsScreen from "./screens/statsScreen/statsScreen";
 
-
 // TODO: Add images to upgradeData
 // TODO: Remove Stats?
 
@@ -46,7 +45,7 @@ export default function App() {
 
     const pointIncrease = () => {
         setTotalPoints(totalPoints + clickPower);
-        setLifetimeClicks(lifetimeClicks + 1)
+        setLifetimeClicks(lifetimeClicks + 1);
     };
 
     useEffect(() => {
@@ -57,9 +56,13 @@ export default function App() {
         return () => clearInterval(interval);
     }, [passivePoints]);
 
-    const upgradePurchase = (upgradeCost: number, upgradeName: string, passivePointsIncrease: number) => {
+    const upgradePurchase = (
+        upgradeCost: number,
+        upgradeName: string,
+        passivePointsIncrease: number
+    ) => {
         if (totalPoints >= upgradeCost) {
-            if (upgradeName == 'clickerUpgrade') {
+            if (upgradeName == "clickerUpgrade") {
                 setClickPower(clickPower + 1);
             }
             setTotalPoints(totalPoints - upgradeCost);
@@ -73,7 +76,6 @@ export default function App() {
             ...prevState,
             [upgradeName]: (prevState[upgradeName] || 0) + 1,
         }));
-
     };
 
     const renderScreen = () => {
